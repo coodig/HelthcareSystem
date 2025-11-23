@@ -111,19 +111,19 @@ We prioritize data integrity and user security.
 
 ## 🛠️ Tech Stack
 
-* **Backend:** [Your Backend Lang, e.g., PHP/Laravel, Node.js]
-* **Frontend:** [Your Frontend, e.g., React, Blade, Vue]
-* **Database:** MySQL / PostgreSQL
+* **Backend:** PHP
+* **Frontend:** HTML, CSS, JS, Bootstrap
+* **Database:** MySQL
 * **Real-time:** WebSockets (Pusher/Socket.io) for Notifications & Chat
-* **Cloud/Storage:** AWS S3 / Local Storage
+* **Cloud/Storage:** Local Storage
 
 ---
 
 ## 📬 Contact / Support
 
 For technical support or queries regarding **Sphare Healthcare**:
-* **Developer:** [Your Name]
-* **Email:** [Your Email]
+* **Developer:** Sphare Co.
+* **Email:** adarshsharma1350@gmail.com
 
 ---
 *© 2025 Sphare Healthcare. All Rights Reserved.*
