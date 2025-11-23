@@ -1,20 +1,41 @@
-<!-- 
- 
+<?php
 
-// $message = "";
+// session_start();
 
-// if($_SERVER['REQUEST_METHOD'] == "POST"){
-//     $email = mysqli_real_escape_string($connection,$_POST['email']);
-//     $password = 
-// }
+include "../config/db.php";
 
-// ?>
+$message = "";
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $password = $_POST['password'];
 
+    $query = mysqli_query($connection, "SELECT id, username, email, password FROM users WHERE email= '$email' LIMIT 1 ");
+
+    if (mysqli_num_rows($query) == 1) {
+        $user = mysqli_fetch_assoc($query);
+
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+
+            header("Location: ../web/dashboard.php");
+            exit();
+        } else {
+            $message = "Your password is incorrect";
+        }
+    } else {
+        $message = "Your email is not exist in our database";
+    }
+}
+
+?>
 
 <?php
 include "../partials/header.php";
-include "../partials/navbar.php";
+?>
+<?php
+// include "../partials/navbar.php"; 
 ?>
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
@@ -23,7 +44,17 @@ include "../partials/navbar.php";
         <div class="card shadow-sm border-0">
             <div class="card-body p-4">
 
+                <h3>
+                    <a class="navbar-brand fw-bold" href="/HelthcareSystem/">
+                        Sphare<span class="text-primary">Healthcare</span>
+                    </a>
+                </h3>
                 <h3 class="text-center mb-4 fw-bold">Login</h3>
+
+                <?php if ($message) : ?>
+                    <div class="alert alert-danger"><?php echo $message ?></div>
+                <?php endif ?>
+
 
                 <form action="login.php" method="POST">
 
