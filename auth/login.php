@@ -1,8 +1,7 @@
 <?php
-
-// session_start();
-
-include "../config/db.php";
+include "../partials/header.php";
+?>
+<?php
 
 $message = "";
 
@@ -31,9 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 ?>
 
-<?php
-include "../partials/header.php";
-?>
+
 <?php
 // include "../partials/navbar.php"; 
 ?>
@@ -44,11 +41,11 @@ include "../partials/header.php";
         <div class="card shadow-sm border-0">
             <div class="card-body p-4">
 
-                <h3>
+                <h2 class="text-center mb-3">
                     <a class="navbar-brand fw-bold" href="/HelthcareSystem/">
                         Sphare<span class="text-primary">Healthcare</span>
                     </a>
-                </h3>
+                </h2>
                 <h3 class="text-center mb-4 fw-bold">Login</h3>
 
                 <?php if ($message) : ?>
@@ -86,4 +83,6 @@ include "../partials/header.php";
     </div>
 </div>
 
-<?php include "../partials/footer.php"; ?>
+<?php 
+// include "../partials/footer.php"; 
+?>

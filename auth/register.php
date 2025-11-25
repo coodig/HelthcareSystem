@@ -1,27 +1,33 @@
+<?php include "../partials/header.php"; ?>
 <?php
-
-include "../config/db.php";
 
 $message = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($connection, $_POST['username']);
-    $email = mysqli_real_escape_string($connection, $_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $check = mysqli_query($connection, "select id FROM users WHERE email = '$email' ");
-
-    if (mysqli_num_rows($check) > 0) {
-        $message = "Email already exits in the server";
+    $raw_username = $_POST['username'];
+    if (!preg_match("/^[a-zA-Z0-9]+$/", $raw_username)) {
+        $message = "Only letters and numbers are allowed, special characters ex: !,@,#,$ and white spaces not allowed";
     } else {
-        $query = mysqli_query($connection, "INSERT INTO users (username, email, password) VALUES ('$username','$email','$password')");
 
-        if ($query) {
-            header("Location: login.php?registered=1");
-            exit();
+        $username = mysqli_real_escape_string($connection, $_POST['username']);
+        $email = mysqli_real_escape_string($connection, $_POST['email']);
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        $check = mysqli_query($connection, "select id FROM users WHERE email = '$email' ");
+
+        if (mysqli_num_rows($check) > 0) {
+            $message = "Email already exits in the server";
         } else {
-            $message = "Registration failed";
+            $query = mysqli_query($connection, "INSERT INTO users (username, email, password) VALUES ('$username','$email','$password')");
+
+            if ($query) {
+                header("Location: login.php?registered=1");
+                exit();
+            } else {
+                $message = "Registration failed";
+            }
         }
     }
 }
@@ -29,16 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-
-<?php include "../partials/header.php"; ?>
-<?php include "../partials/navbar.php"; ?>
+<?php
+// include "../partials/navbar.php"; 
+?>
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
     <div class="col-md-5">
 
         <div class="card shadow-sm border-0">
             <div class="card-body p-4">
-
+                <h2 class="text-center mb-3">
+                    <a class="navbar-brand fw-bold" href="/HelthcareSystem/">
+                        Sphare<span class="text-primary">Healthcare</span>
+                    </a>
+                </h2>
                 <h3 class="text-center mb-4 fw-bold">Create Account</h3>
 
                 <?php if ($message) : ?>
@@ -80,4 +90,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 
-<?php include "../partials/footer.php"; ?>
+<?php 
+// include "../partials/footer.php"; 
+?>

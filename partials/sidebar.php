@@ -9,14 +9,6 @@
                 Dashboard
             </a>
 
-            <a href="/HelthcareSystem/auth/login.php" class="list-group-item list-group-item-action py-3">
-                Login
-            </a>
-
-            <a href="/HelthcareSystem/auth/register.php" class="list-group-item list-group-item-action py-3">
-                Register
-            </a>
-
             <a href="#" class="list-group-item list-group-item-action py-3">
                 Appointments
             </a>
@@ -32,11 +24,11 @@
             <a href="#" class="list-group-item list-group-item-action py-3">
                 Settings
             </a>
-            <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="#" class=" mb-0 list-group-item list-group-item-action py-3 text-danger">
                     logout
                 </a>
-            <?php endif; ?>
+            <?php endif; ?> -->
         </div>
     </div>
 

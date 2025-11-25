@@ -1,3 +1,9 @@
+<!-- <?php
+
+    // session_start();
+
+?> -->
+
 <?php
 include "../partials/header.php";
 include "../partials/navbar.php";
@@ -6,8 +12,9 @@ include "../partials/sidebar.php";
 
 <div class="container-fluid">
 
-    <h2 class="fw-bold mb-4">Dashboard Overview</h2>
+    <h2 class="fw-bold mb-4">Dashboard</h2>
 
+    <!-- <h3 class="font-bold">Welcome, <?php $_SESSION['username']; ?></h3> -->
     <div class="row g-4">
 
         <div class="col-md-3">
